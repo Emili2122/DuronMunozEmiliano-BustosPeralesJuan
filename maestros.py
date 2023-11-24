@@ -7,6 +7,7 @@ maestros = [
 
     #EMILIANO SALIO DEL CHAT JAJA
 
+    {'name': 'MariaAzucena', 'Materia': 'Direccion de Proyectos 2', 'Numero de empleado': 2006},
 
 
 ]
