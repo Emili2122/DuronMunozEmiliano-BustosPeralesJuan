@@ -12,5 +12,13 @@ def ping():
 def getMaestros():
     return  jsonify(maestros)
 
+#Funcion Para Buscar Maestros
+@app.route('/maestros/<string:maestro_name>')
+def getMaestro(maestro_name):
+    maestroFound = [maestro for maestro in maestros if maestro['name'] == maestro_name]
+    if (len(maestroFound)>0):
+        return jsonify({"maestro": maestroFound[0]})
+    return jsonify({"Mensaje": "Maestro No Encontrado"})
+
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
