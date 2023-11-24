@@ -47,5 +47,18 @@ def editmaestro(maestro_name):
         })
     return jsonify({"mensaje": "maestro no encontrado"})
 
+#Funcion Para Eliminar Maestros
+@app.route('/maestros/<string:maestro_name>', methods=['DELETE'])
+def deleteMaestro(maestro_name):
+    maestrosFound = [maestro for maestro in maestros if maestro['name'] == maestro_name]
+    if len(maestrosFound) > 0:
+        maestros.remove(maestrosFound[0])
+        return jsonify({
+            'mensaje': 'Maestro eliminado',
+            'maestros': maestros
+        })
+    return jsonify({"mensaje": "maestro no encontrado"})
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
