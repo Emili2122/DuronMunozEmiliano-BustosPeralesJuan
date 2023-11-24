@@ -20,5 +20,16 @@ def getMaestro(maestro_name):
         return jsonify({"maestro": maestroFound[0]})
     return jsonify({"Mensaje": "Maestro No Encontrado"})
 
+#Funcion Para Agregar Maestros
+@app.route('/maestros', methods=['POST'])
+def addMaestro():
+    new_maestro = {
+        "name": request.json['name'],
+        "Materia": request.json['Materia'],
+        "Numero de Empleado": request.json['Numero de empleado']
+    }
+    maestros.append(new_maestro)
+    return jsonify({"mensaje": "Maestro agregado Satisfactoriamente", "maestros": maestros})
+
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
