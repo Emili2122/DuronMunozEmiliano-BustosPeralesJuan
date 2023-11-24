@@ -33,5 +33,19 @@ def addMaestro():
 
 #EMILIANO TERMINA AQUI JAJA 
 
+#Funcion Para Editar Maestros
+@app.route('/maestros/<string:maestro_name>', methods=['PUT'])
+def editmaestro(maestro_name):
+    maestroFound = [maestro for maestro in maestros if maestro['name'] == maestro_name]
+    if (len(maestroFound) >0):
+        maestroFound[0]['name'] = request.json['name']
+        maestroFound[0]['Materia'] = request.json['Materia']
+        maestroFound[0]['Numero de empleado'] = request.json['Numero de empleado']
+        return jsonify({
+            "mensaje": "Maestro actualizado",
+            "maestro": maestroFound[0]
+        })
+    return jsonify({"mensaje": "maestro no encontrado"})
+
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
