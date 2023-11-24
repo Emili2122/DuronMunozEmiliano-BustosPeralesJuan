@@ -31,5 +31,7 @@ def addMaestro():
     maestros.append(new_maestro)
     return jsonify({"mensaje": "Maestro agregado Satisfactoriamente", "maestros": maestros})
 
+#EMILIANO TERMINA AQUI JAJA 
+
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
